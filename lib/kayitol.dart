@@ -5,9 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-
-
-
+import 'package:kullanici_giris/main.dart';
 
 class kayitSayfasi extends StatefulWidget {
   const kayitSayfasi({Key? key}) : super(key: key);
@@ -176,20 +174,36 @@ class _kayitSayfasiState extends State<kayitSayfasi> {
                       ),
                       InkWell(
                         onTap: () {
-                          isValid =
-                              EmailValidator.validate(t1.text);
+                          isValid = EmailValidator.validate(t1.text);
                           if (isValid) {
-                            if(t2.text == t3.text){
+                            if (t2.text.toString() == t3.text.toString()) {
                               kayitOl();
-                            }
-                            else{
                               Fluttertoast.showToast(
-                                msg: 'Şifreler uyuşmuyor!',
-                                backgroundColor: Colors.red.shade600,
-                                toastLength: Toast.LENGTH_SHORT,
-                                gravity: ToastGravity.TOP_LEFT,
-                                timeInSecForIosWeb: 2,
-                                fontSize: 16.0);
+                                  msg: 'Kayıt Başarılı! \nGiriş Ekranına Yönlendiriliyorsunuz...',
+                                  backgroundColor: Colors.red.shade600,
+                                  toastLength: Toast.LENGTH_SHORT,
+                                  gravity: ToastGravity.TOP,
+                                  timeInSecForIosWeb: 5,
+                                  fontSize: 16.0);
+
+                              FirebaseAuth.instance
+                                  .signInWithEmailAndPassword(
+                                      email: t1.text, password: t2.text)
+                                  .then((kullanici) {
+                                Navigator.pushAndRemoveUntil(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (_) => Iskele()),
+                                    (Route<dynamic> route) => false);
+                              });
+                            } else {
+                              Fluttertoast.showToast(
+                                  msg: 'Şifreler uyuşmuyor!',
+                                  backgroundColor: Colors.red.shade600,
+                                  toastLength: Toast.LENGTH_SHORT,
+                                  gravity: ToastGravity.TOP_LEFT,
+                                  timeInSecForIosWeb: 2,
+                                  fontSize: 16.0);
                             }
                           } else if (t1.text.isEmpty) {
                             Fluttertoast.showToast(
@@ -208,7 +222,6 @@ class _kayitSayfasiState extends State<kayitSayfasi> {
                                 timeInSecForIosWeb: 1,
                                 fontSize: 16.0);
                           }
-                         
                         },
                         child: Container(
                           padding: EdgeInsets.symmetric(vertical: 5),
