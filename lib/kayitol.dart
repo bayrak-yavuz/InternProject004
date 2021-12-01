@@ -31,6 +31,7 @@ class _kayitSayfasiState extends State<kayitSayfasi> {
     var size = MediaQuery.of(context).size;
     return Scaffold(
         appBar: AppBar(
+          backgroundColor: Colors.blueGrey.shade800.withOpacity(.75),
           leading: BackButton(color: Colors.white),
           title: Text("Kayıt Ol"),
           centerTitle: true,
@@ -39,8 +40,8 @@ class _kayitSayfasiState extends State<kayitSayfasi> {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10.0),
             child: Container(
-              height: size.height * .75,
-              width: size.width * .85,
+              height: size.height * .50,
+              width: size.width * .75,
               decoration: BoxDecoration(
                   color: Colors.blueGrey.shade800.withOpacity(.75),
                   borderRadius: BorderRadius.all(Radius.circular(20)),
@@ -57,97 +58,148 @@ class _kayitSayfasiState extends State<kayitSayfasi> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      TextField(
+                      TextFormField(
                         controller: t1,
                         style: TextStyle(
-                          color: Colors.blue,
+                          color: Colors.white,
                         ),
-                        cursorColor: Colors.blue,
+                        cursorColor: Colors.white,
                         keyboardType: TextInputType.emailAddress,
                         decoration: InputDecoration(
                           prefixIcon: Icon(
                             Icons.mail,
-                            color: Colors.blue,
+                            color: Colors.white,
                           ),
                           hintText: 'E-Posta',
                           prefixText: ' ',
                           hintStyle: TextStyle(
-                            color: Colors.blue,
+                            color: Colors.white,
                           ),
-                          focusColor: Colors.blue,
+                          focusColor: Colors.white,
                           focusedBorder: UnderlineInputBorder(
                             borderSide: BorderSide(
-                              color: Colors.blue,
+                              color: Colors.white,
                             ),
                           ),
                           enabledBorder: UnderlineInputBorder(
                             borderSide: BorderSide(
-                              color: Colors.blue,
+                              color: Colors.white,
                             ),
                           ),
                         ),
+                        validator: (t1) {
+                          if (t1!.isEmpty) {
+                            "Lütfen E-postanızı Giriniz!";
+                          } else {
+                            return null;
+                          }
+                        },
                       ),
                       SizedBox(
                         height: size.height * 0.02,
                       ),
-                      TextField(
+                      TextFormField(
                         controller: t2,
                         style: TextStyle(
-                          color: Colors.blue,
+                          color: Colors.white,
                         ),
-                        cursorColor: Colors.blue,
+                        cursorColor: Colors.white,
                         obscureText: true,
                         decoration: InputDecoration(
                           prefixIcon: Icon(
                             Icons.vpn_key,
-                            color: Colors.blue,
+                            color: Colors.white,
                           ),
                           hintText: 'Parola',
                           prefixText: ' ',
                           hintStyle: TextStyle(
-                            color: Colors.blue,
+                            color: Colors.white,
                           ),
-                          focusColor: Colors.blue,
+                          focusColor: Colors.white,
                           focusedBorder: UnderlineInputBorder(
                             borderSide: BorderSide(
-                              color: Colors.blue,
+                              color: Colors.white,
                             ),
                           ),
                           enabledBorder: UnderlineInputBorder(
                             borderSide: BorderSide(
-                              color: Colors.blue,
+                              color: Colors.white,
                             ),
                           ),
                         ),
-                      ),
-                      SizedBox(
-                        height: size.height * 0.08,
+                        validator: (t2) {
+                          if (t2!.isEmpty) {
+                            "Lütfen Şifrenizi Giriniz!";
+                          } else {
+                            return null;
+                          }
+                        },
                       ),
                       SizedBox(
                         height: size.height * 0.02,
+                      ),
+                      TextFormField(
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
+                        cursorColor: Colors.white,
+                        obscureText: true,
+                        decoration: InputDecoration(
+                          prefixIcon: Icon(
+                            Icons.vpn_key,
+                            color: Colors.white,
+                          ),
+                          hintText: 'Parola Tekrar',
+                          prefixText: ' ',
+                          hintStyle: TextStyle(
+                            color: Colors.white,
+                          ),
+                          focusColor: Colors.white,
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Colors.white,
+                            ),
+                          ),
+                          enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                        validator: (t2) {
+                          if (t2!.isEmpty) {
+                            "Lütfen Şifrenizi Giriniz!";
+                          } 
+                          else {
+                            return null;
+                          }
+                        },
+                      ),
+                      SizedBox(
+                        height: size.height * 0.08,
                       ),
                       InkWell(
                         onTap: () {
                           kayitOl();
                         },
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Container(
-                              height: 1,
-                              width: 75,
-                              color: Colors.blue,
+                        child: Container(
+                          padding: EdgeInsets.symmetric(vertical: 5),
+                          decoration: BoxDecoration(
+                              border: Border.all(color: Colors.white, width: 2),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(30))),
+                          child: Padding(
+                            padding: const EdgeInsets.all(5.0),
+                            child: Center(
+                              child: Text(
+                                "Kayıt Ol",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                ),
+                              ),
                             ),
-                            Text(
-                              "Kayıt Ol",
-                              style: TextStyle(color: Colors.blue),
-                            ),
-                            Container(
-                              height: 1,
-                              width: 75,
-                              color: Colors.blue,
-                            ),
-                          ],
+                          ),
                         ),
                       ),
                       /*Row(

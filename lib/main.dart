@@ -52,6 +52,7 @@ class _IskeleState extends State<Iskele> {
           context,
           MaterialPageRoute(builder: (_) => ProfilEkrani()),
           (Route<dynamic> route) => false);
+    
     });
   }
 
@@ -84,29 +85,29 @@ class _IskeleState extends State<Iskele> {
                   TextField(
                     controller: t1,
                     style: TextStyle(
-                      color: Colors.blue,
+                      color: Colors.white,
                     ),
-                    cursorColor: Colors.blue,
+                    cursorColor: Colors.white,
                     keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
                       prefixIcon: Icon(
                         Icons.mail,
-                        color: Colors.blue,
+                        color: Colors.white,
                       ),
                       hintText: 'E-Posta',
                       prefixText: ' ',
                       hintStyle: TextStyle(
-                        color: Colors.blue,
+                        color: Colors.white,
                       ),
-                      focusColor: Colors.blue,
+                      focusColor: Colors.white,
                       focusedBorder: UnderlineInputBorder(
                         borderSide: BorderSide(
-                          color: Colors.blue,
+                          color: Colors.white,
                         ),
                       ),
                       enabledBorder: UnderlineInputBorder(
                         borderSide: BorderSide(
-                          color: Colors.blue,
+                          color: Colors.white,
                         ),
                       ),
                     ),
@@ -117,29 +118,29 @@ class _IskeleState extends State<Iskele> {
                   TextField(
                     controller: t2,
                     style: TextStyle(
-                      color: Colors.blue,
+                      color: Colors.white,
                     ),
-                    cursorColor: Colors.blue,
+                    cursorColor: Colors.white,
                     obscureText: true,
                     decoration: InputDecoration(
                       prefixIcon: Icon(
                         Icons.vpn_key,
-                        color: Colors.blue,
+                        color: Colors.white,
                       ),
                       hintText: 'Parola',
                       prefixText: ' ',
                       hintStyle: TextStyle(
-                        color: Colors.blue,
+                        color: Colors.white,
                       ),
-                      focusColor: Colors.blue,
+                      focusColor: Colors.white,
                       focusedBorder: UnderlineInputBorder(
                         borderSide: BorderSide(
-                          color: Colors.blue,
+                          color: Colors.white,
                         ),
                       ),
                       enabledBorder: UnderlineInputBorder(
                         borderSide: BorderSide(
-                          color: Colors.blue,
+                          color: Colors.white,
                         ),
                       ),
                     ),
@@ -154,7 +155,7 @@ class _IskeleState extends State<Iskele> {
                     child: Container(
                       padding: EdgeInsets.symmetric(vertical: 5),
                       decoration: BoxDecoration(
-                          border: Border.all(color: Colors.blue, width: 2),
+                          border: Border.all(color: Colors.white, width: 2),
                           borderRadius: BorderRadius.all(Radius.circular(30))),
                       child: Padding(
                         padding: const EdgeInsets.all(5.0),
@@ -162,7 +163,7 @@ class _IskeleState extends State<Iskele> {
                           child: Text(
                             "Giriş Yap",
                             style: TextStyle(
-                              color: Colors.blue,
+                              color: Colors.white,
                               fontSize: 20,
                             ),
                           ),
@@ -188,7 +189,7 @@ class _IskeleState extends State<Iskele> {
                       children: [
                         Text(
                           "Şifremi Unuttum",
-                          style: TextStyle(color: Colors.blue),
+                          style: TextStyle(color: Colors.white),
                         ),
                       ],
                     ),
@@ -199,10 +200,9 @@ class _IskeleState extends State<Iskele> {
                   InkWell(
                     onTap: () {
                       FirebaseAuth.instance.signOut().then((deger) {
-                        Navigator.pushAndRemoveUntil(
+                        Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (_) => kayitSayfasi()),
-                            (Route<dynamic> route) => false);
+                            MaterialPageRoute(builder: (_) => kayitSayfasi()));
                       });
                       //şifremi unuttum
                     },
@@ -213,17 +213,17 @@ class _IskeleState extends State<Iskele> {
                         Container(
                           height: 4,
                           width: 75,
-                          color: Colors.blue,
+                          color: Colors.white,
                         ),
                         Text(
                           "Kayıt Ol",
-                          style: TextStyle(color: Colors.blue, fontSize: 25),
+                          style: TextStyle(color: Colors.white, fontSize: 25),
                           
                         ),
                         Container(
                           height: 4,
                           width: 75,
-                          color: Colors.blue,
+                          color: Colors.white,
                         ),
                       ],
                     ),
