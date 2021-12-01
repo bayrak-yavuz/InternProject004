@@ -175,13 +175,13 @@ class _IskeleState extends State<Iskele> {
                   ),
                   InkWell(
                     onTap: () {
-                      FirebaseAuth.instance.signOut().then((deger) {
+                      /*FirebaseAuth.instance.signOut().then((deger) {
                         Navigator.pushAndRemoveUntil(
                             context,
                             MaterialPageRoute(builder: (_) => kayitSayfasi()),
                             (Route<dynamic> route) => false);
-                      });
-                      //kayitOl();
+                      });*/
+                      //şifremi unuttum
                     },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -198,13 +198,14 @@ class _IskeleState extends State<Iskele> {
                   ),
                   InkWell(
                     onTap: () {
-                      /*FirebaseAuth.instance.signOut().then((deger) {
-                        Navigator.pushAndRemoveUntil(
+                      FirebaseAuth.instance.signOut().then((deger) {
+                        Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (_) => kayitSayfasi()),
-                            (Route<dynamic> route) => false);
-                      });*/
-                      //şifremi unuttum
+                            MaterialPageRoute(
+                              builder: (_) => kayitSayfasi(),
+                            ));
+                      });
+                      //kayitOl();
                     },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,

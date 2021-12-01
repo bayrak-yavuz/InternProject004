@@ -14,8 +14,8 @@ class kayitSayfasi extends StatefulWidget {
 class _kayitSayfasiState extends State<kayitSayfasi> {
   TextEditingController t1 = TextEditingController();
   TextEditingController t2 = TextEditingController();
+  TextEditingController t3 = TextEditingController();
   var currentUser = FirebaseAuth.instance.currentUser;
-
   displayName(String mail) {
     int deger = mail.indexOf('@');
     String result = mail.substring(0, deger);
@@ -26,10 +26,13 @@ class _kayitSayfasiState extends State<kayitSayfasi> {
     await FirebaseAuth.instance
         .createUserWithEmailAndPassword(email: t1.text, password: t2.text)
         .then((kullanici) {
-      FirebaseFirestore.instance.collection("user").doc(currentUser!.uid).set({
+      FirebaseFirestore.instance
+          .collection("user")
+          .doc(kullanici.user!.uid)
+          .set({
         "userMail": t1.text,
         "displayName": displayName(t1.text),
-        "uid": currentUser!.uid
+        "uid": kullanici.user!.uid
       });
     });
   }
@@ -133,6 +136,7 @@ class _kayitSayfasiState extends State<kayitSayfasi> {
                         height: size.height * 0.02,
                       ),
                       TextFormField(
+                        controller: t3,
                         style: TextStyle(
                           color: Colors.white,
                         ),
