@@ -3,6 +3,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:email_validator/email_validator.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+
+
+
 
 class kayitSayfasi extends StatefulWidget {
   const kayitSayfasi({Key? key}) : super(key: key);
@@ -12,6 +17,7 @@ class kayitSayfasi extends StatefulWidget {
 }
 
 class _kayitSayfasiState extends State<kayitSayfasi> {
+  bool isValid = false;
   TextEditingController t1 = TextEditingController();
   TextEditingController t2 = TextEditingController();
   TextEditingController t3 = TextEditingController();
@@ -170,7 +176,39 @@ class _kayitSayfasiState extends State<kayitSayfasi> {
                       ),
                       InkWell(
                         onTap: () {
-                          kayitOl();
+                          isValid =
+                              EmailValidator.validate(t1.text);
+                          if (isValid) {
+                            if(t2.text == t3.text){
+                              kayitOl();
+                            }
+                            else{
+                              Fluttertoast.showToast(
+                                msg: 'Şifreler uyuşmuyor!',
+                                backgroundColor: Colors.red.shade600,
+                                toastLength: Toast.LENGTH_SHORT,
+                                gravity: ToastGravity.TOP_LEFT,
+                                timeInSecForIosWeb: 2,
+                                fontSize: 16.0);
+                            }
+                          } else if (t1.text.isEmpty) {
+                            Fluttertoast.showToast(
+                                msg: 'E-postanızı giriniz!',
+                                backgroundColor: Colors.red.shade600,
+                                toastLength: Toast.LENGTH_SHORT,
+                                gravity: ToastGravity.TOP,
+                                timeInSecForIosWeb: 1,
+                                fontSize: 16.0);
+                          } else {
+                            Fluttertoast.showToast(
+                                msg: 'Geçersiz e-posta!',
+                                backgroundColor: Colors.red.shade600,
+                                toastLength: Toast.LENGTH_SHORT,
+                                gravity: ToastGravity.TOP,
+                                timeInSecForIosWeb: 1,
+                                fontSize: 16.0);
+                          }
+                         
                         },
                         child: Container(
                           padding: EdgeInsets.symmetric(vertical: 5),
