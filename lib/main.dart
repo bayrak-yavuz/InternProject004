@@ -198,12 +198,12 @@ class _IskeleState extends State<Iskele> {
                   ),
                   InkWell(
                     onTap: () {
-                      /*FirebaseAuth.instance.signOut().then((deger) {
+                      FirebaseAuth.instance.signOut().then((deger) {
                         Navigator.pushAndRemoveUntil(
                             context,
                             MaterialPageRoute(builder: (_) => kayitSayfasi()),
                             (Route<dynamic> route) => false);
-                      });*/
+                      });
                       //şifremi unuttum
                     },
                     

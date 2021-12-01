@@ -31,7 +31,9 @@ class _kayitSayfasiState extends State<kayitSayfasi> {
     var size = MediaQuery.of(context).size;
     return Scaffold(
         appBar: AppBar(
-          title: const Text("Kayıt Ol"),
+          leading: BackButton(color: Colors.white),
+          title: Text("Kayıt Ol"),
+          centerTitle: true,
         ),
         body: Center(
           child: Padding(
