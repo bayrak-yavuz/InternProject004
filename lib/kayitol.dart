@@ -30,133 +30,136 @@ class _kayitSayfasiState extends State<kayitSayfasi> {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
+        appBar: AppBar(
+          title: const Text("Kayıt Ol"),
+        ),
         body: Center(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10.0),
-        child: Container(
-          height: size.height * .75,
-          width: size.width * .85,
-          decoration: BoxDecoration(
-              color: Colors.blueGrey.shade800.withOpacity(.75),
-              borderRadius: BorderRadius.all(Radius.circular(20)),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(.75),
-                  blurRadius: 10,
-                  spreadRadius: 2,
-                )
-              ]),
           child: Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  TextField(
-                    controller: t1,
-                    style: TextStyle(
-                      color: Colors.blue,
-                    ),
-                    cursorColor: Colors.blue,
-                    keyboardType: TextInputType.emailAddress,
-                    decoration: InputDecoration(
-                      prefixIcon: Icon(
-                        Icons.mail,
-                        color: Colors.blue,
-                      ),
-                      hintText: 'E-Posta',
-                      prefixText: ' ',
-                      hintStyle: TextStyle(
-                        color: Colors.blue,
-                      ),
-                      focusColor: Colors.blue,
-                      focusedBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
+            padding: const EdgeInsets.symmetric(horizontal: 10.0),
+            child: Container(
+              height: size.height * .75,
+              width: size.width * .85,
+              decoration: BoxDecoration(
+                  color: Colors.blueGrey.shade800.withOpacity(.75),
+                  borderRadius: BorderRadius.all(Radius.circular(20)),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(.75),
+                      blurRadius: 10,
+                      spreadRadius: 2,
+                    )
+                  ]),
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      TextField(
+                        controller: t1,
+                        style: TextStyle(
                           color: Colors.blue,
                         ),
+                        cursorColor: Colors.blue,
+                        keyboardType: TextInputType.emailAddress,
+                        decoration: InputDecoration(
+                          prefixIcon: Icon(
+                            Icons.mail,
+                            color: Colors.blue,
+                          ),
+                          hintText: 'E-Posta',
+                          prefixText: ' ',
+                          hintStyle: TextStyle(
+                            color: Colors.blue,
+                          ),
+                          focusColor: Colors.blue,
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Colors.blue,
+                            ),
+                          ),
+                          enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Colors.blue,
+                            ),
+                          ),
+                        ),
                       ),
-                      enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
+                      SizedBox(
+                        height: size.height * 0.02,
+                      ),
+                      TextField(
+                        controller: t2,
+                        style: TextStyle(
                           color: Colors.blue,
                         ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: size.height * 0.02,
-                  ),
-                  TextField(
-                    controller: t2,
-                    style: TextStyle(
-                      color: Colors.blue,
-                    ),
-                    cursorColor: Colors.blue,
-                    obscureText: true,
-                    decoration: InputDecoration(
-                      prefixIcon: Icon(
-                        Icons.vpn_key,
-                        color: Colors.blue,
-                      ),
-                      hintText: 'Parola',
-                      prefixText: ' ',
-                      hintStyle: TextStyle(
-                        color: Colors.blue,
-                      ),
-                      focusColor: Colors.blue,
-                      focusedBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Colors.blue,
+                        cursorColor: Colors.blue,
+                        obscureText: true,
+                        decoration: InputDecoration(
+                          prefixIcon: Icon(
+                            Icons.vpn_key,
+                            color: Colors.blue,
+                          ),
+                          hintText: 'Parola',
+                          prefixText: ' ',
+                          hintStyle: TextStyle(
+                            color: Colors.blue,
+                          ),
+                          focusColor: Colors.blue,
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Colors.blue,
+                            ),
+                          ),
+                          enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Colors.blue,
+                            ),
+                          ),
                         ),
                       ),
-                      enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Colors.blue,
+                      SizedBox(
+                        height: size.height * 0.08,
+                      ),
+                      SizedBox(
+                        height: size.height * 0.02,
+                      ),
+                      InkWell(
+                        onTap: () {
+                          kayitOl();
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Container(
+                              height: 1,
+                              width: 75,
+                              color: Colors.blue,
+                            ),
+                            Text(
+                              "Kayıt Ol",
+                              style: TextStyle(color: Colors.blue),
+                            ),
+                            Container(
+                              height: 1,
+                              width: 75,
+                              color: Colors.blue,
+                            ),
+                          ],
                         ),
                       ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: size.height * 0.08,
-                  ),
-                  SizedBox(
-                    height: size.height * 0.02,
-                  ),
-                  InkWell(
-                    onTap: () {
-                      kayitOl();
-                    },
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Container(
-                          height: 1,
-                          width: 75,
-                          color: Colors.blue,
-                        ),
-                        Text(
-                          "Kayıt Ol",
-                          style: TextStyle(color: Colors.blue),
-                        ),
-                        Container(
-                          height: 1,
-                          width: 75,
-                          color: Colors.blue,
-                        ),
-                      ],
-                    ),
-                  ),
-                  /*Row(
+                      /*Row(
                       children: [
                         ElevatedButton(child: Text("Kaydol"), onPressed: kayitOl),
                         ElevatedButton(child: Text("Giriş Yap"), onPressed: girisYap),
                       ],
                     ),*/
-                ],
+                    ],
+                  ),
+                ),
               ),
             ),
           ),
-        ),
-      ),
-    ));
+        ));
   }
 }
