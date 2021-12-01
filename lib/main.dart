@@ -145,7 +145,7 @@ class _IskeleState extends State<Iskele> {
                     ),
                   ),
                   SizedBox(
-                    height: size.height * 0.08,
+                    height: size.height * 0.02,
                   ),
                   InkWell(
                     onTap: () {
@@ -186,17 +186,42 @@ class _IskeleState extends State<Iskele> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
+                        Text(
+                          "Şifremi Unuttum",
+                          style: TextStyle(color: Colors.blue),
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: size.height * 0.06,
+                  ),
+                  InkWell(
+                    onTap: () {
+                      /*FirebaseAuth.instance.signOut().then((deger) {
+                        Navigator.pushAndRemoveUntil(
+                            context,
+                            MaterialPageRoute(builder: (_) => kayitSayfasi()),
+                            (Route<dynamic> route) => false);
+                      });*/
+                      //şifremi unuttum
+                    },
+                    
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
                         Container(
-                          height: 1,
+                          height: 4,
                           width: 75,
                           color: Colors.blue,
                         ),
                         Text(
                           "Kayıt Ol",
-                          style: TextStyle(color: Colors.blue),
+                          style: TextStyle(color: Colors.blue, fontSize: 25),
+                          
                         ),
                         Container(
-                          height: 1,
+                          height: 4,
                           width: 75,
                           color: Colors.blue,
                         ),
