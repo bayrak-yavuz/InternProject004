@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "341166756993",
+    "project_id": "todolist-d1ea1",
+    "storage_bucket": "todolist-d1ea1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:341166756993:android:bbda52a456bb39c0342980",
+        "android_client_info": {
+          "package_name": "com.example.kullanici_giris"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "341166756993-kq9dkquaf6arp2nfml8kk6b2qlir6m0r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDKFBi4eJtUX02cRZlUbfnD-Wp_QYqE0VM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "341166756993-kq9dkquaf6arp2nfml8kk6b2qlir6m0r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
