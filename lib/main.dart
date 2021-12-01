@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors
+// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, prefer_const_literals_to_create_immutables
 //yorum satiri
 // ignore: unused_import
 import 'package:cloud_firestore/cloud_firestore.dart';

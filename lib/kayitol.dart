@@ -14,15 +14,23 @@ class kayitSayfasi extends StatefulWidget {
 class _kayitSayfasiState extends State<kayitSayfasi> {
   TextEditingController t1 = TextEditingController();
   TextEditingController t2 = TextEditingController();
+  var currentUser = FirebaseAuth.instance.currentUser;
+
+  displayName(String mail) {
+    int deger = mail.indexOf('@');
+    String result = mail.substring(0, deger);
+    return result;
+  }
 
   Future<void> kayitOl() async {
     await FirebaseAuth.instance
         .createUserWithEmailAndPassword(email: t1.text, password: t2.text)
         .then((kullanici) {
-      FirebaseFirestore.instance
-          .collection("user")
-          .doc(t1.text)
-          .set({"KullaniciEposta": t1.text, "KullaniciSifre": t2.text});
+      FirebaseFirestore.instance.collection("user").doc(currentUser!.uid).set({
+        "userMail": t1.text,
+        "displayName": displayName(t1.text),
+        "uid": currentUser!.uid
+      });
     });
   }
 
@@ -87,13 +95,6 @@ class _kayitSayfasiState extends State<kayitSayfasi> {
                             ),
                           ),
                         ),
-                        validator: (t1) {
-                          if (t1!.isEmpty) {
-                            "Lütfen E-postanızı Giriniz!";
-                          } else {
-                            return null;
-                          }
-                        },
                       ),
                       SizedBox(
                         height: size.height * 0.02,
@@ -127,13 +128,6 @@ class _kayitSayfasiState extends State<kayitSayfasi> {
                             ),
                           ),
                         ),
-                        validator: (t2) {
-                          if (t2!.isEmpty) {
-                            "Lütfen Şifrenizi Giriniz!";
-                          } else {
-                            return null;
-                          }
-                        },
                       ),
                       SizedBox(
                         height: size.height * 0.02,
@@ -166,14 +160,6 @@ class _kayitSayfasiState extends State<kayitSayfasi> {
                             ),
                           ),
                         ),
-                        validator: (t2) {
-                          if (t2!.isEmpty) {
-                            "Lütfen Şifrenizi Giriniz!";
-                          } 
-                          else {
-                            return null;
-                          }
-                        },
                       ),
                       SizedBox(
                         height: size.height * 0.08,
