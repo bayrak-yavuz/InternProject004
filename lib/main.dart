@@ -1,5 +1,4 @@
 // ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, prefer_const_literals_to_create_immutables
-//yorum satiri
 // ignore: unused_import
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -7,6 +6,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:kullanici_giris/kayitol.dart';
 import 'package:kullanici_giris/profilsayfasi.dart';
+import 'package:email_validator/email_validator.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -31,6 +32,7 @@ class Iskele extends StatefulWidget {
 class _IskeleState extends State<Iskele> {
   TextEditingController t1 = TextEditingController();
   TextEditingController t2 = TextEditingController();
+  bool isValid = false;
   var currentUser = FirebaseAuth.instance.currentUser;
 
   /*Future<void> kayitOl() async {
@@ -81,7 +83,7 @@ class _IskeleState extends State<Iskele> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  TextField(
+                  TextFormField(
                     controller: t1,
                     style: TextStyle(
                       color: Colors.white,
@@ -114,7 +116,7 @@ class _IskeleState extends State<Iskele> {
                   SizedBox(
                     height: size.height * 0.02,
                   ),
-                  TextField(
+                  TextFormField(
                     controller: t2,
                     style: TextStyle(
                       color: Colors.white,
@@ -149,7 +151,24 @@ class _IskeleState extends State<Iskele> {
                   ),
                   InkWell(
                     onTap: () {
-                      girisYap();
+                      isValid = EmailValidator.validate(t1.text);
+                      if (isValid) {
+                        girisYap();
+                      } else if (t1.text.isEmpty) {
+                        Fluttertoast.showToast(
+                            msg: 'Mail Adresinizi Giriniz',
+                            toastLength: Toast.LENGTH_SHORT,
+                            gravity: ToastGravity.TOP,
+                            timeInSecForIosWeb: 1,
+                            fontSize: 16.0);
+                      } else {
+                        Fluttertoast.showToast(
+                            msg: 'Geçerli Bir Mail Adresi Giriniz',
+                            toastLength: Toast.LENGTH_SHORT,
+                            gravity: ToastGravity.TOP,
+                            timeInSecForIosWeb: 1,
+                            fontSize: 16.0);
+                      }
                     },
                     child: Container(
                       padding: EdgeInsets.symmetric(vertical: 5),
