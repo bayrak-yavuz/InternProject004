@@ -176,10 +176,13 @@ class _kayitSayfasiState extends State<kayitSayfasi> {
                         onTap: () {
                           isValid = EmailValidator.validate(t1.text);
                           if (isValid) {
-                            if (t2.text.toString() == t3.text.toString() && t2.text.isNotEmpty && t3.text.isNotEmpty) {
+                            if (t2.text.toString() == t3.text.toString() &&
+                                t2.text.isNotEmpty &&
+                                t3.text.isNotEmpty) {
                               kayitOl();
                               Fluttertoast.showToast(
-                                  msg: 'Kayıt Başarılı! \nGiriş Ekranına Yönlendiriliyorsunuz...',
+                                  msg:
+                                      'Kayıt Başarılı! \nGiriş Ekranına Yönlendiriliyorsunuz...',
                                   backgroundColor: Colors.red.shade600,
                                   toastLength: Toast.LENGTH_SHORT,
                                   gravity: ToastGravity.TOP,
@@ -192,8 +195,7 @@ class _kayitSayfasiState extends State<kayitSayfasi> {
                                   .then((kullanici) {
                                 Navigator.pushAndRemoveUntil(
                                     context,
-                                    MaterialPageRoute(
-                                        builder: (_) => Iskele()),
+                                    MaterialPageRoute(builder: (_) => Iskele()),
                                     (Route<dynamic> route) => false);
                               });
                             } else {

@@ -16,7 +16,6 @@ class _YaziEkraniState extends State<YaziEkrani> {
 
   var gelenYaziBasligi = "";
   var gelenYaziIcerigi = "";
-
   var currentUser = FirebaseAuth.instance.currentUser;
 
   yaziEkle() {
