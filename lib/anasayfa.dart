@@ -7,7 +7,7 @@ class AnaSayfa extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Anasayfa")),
+      appBar: AppBar(title: Text("Anasayfa"), backgroundColor: Colors.blueGrey.shade800.withOpacity(.75),),
       body: TumYazilar(),
     );
   }
