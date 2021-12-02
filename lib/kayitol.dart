@@ -176,7 +176,7 @@ class _kayitSayfasiState extends State<kayitSayfasi> {
                         onTap: () {
                           isValid = EmailValidator.validate(t1.text);
                           if (isValid) {
-                            if (t2.text.toString() == t3.text.toString()) {
+                            if (t2.text.toString() == t3.text.toString() && t2.text.isNotEmpty && t3.text.isNotEmpty) {
                               kayitOl();
                               Fluttertoast.showToast(
                                   msg: 'Kayıt Başarılı! \nGiriş Ekranına Yönlendiriliyorsunuz...',
@@ -198,7 +198,7 @@ class _kayitSayfasiState extends State<kayitSayfasi> {
                               });
                             } else {
                               Fluttertoast.showToast(
-                                  msg: 'Şifreler uyuşmuyor!',
+                                  msg: 'Şifrenizi kontrol ediniz!',
                                   backgroundColor: Colors.red.shade600,
                                   toastLength: Toast.LENGTH_SHORT,
                                   gravity: ToastGravity.TOP_LEFT,

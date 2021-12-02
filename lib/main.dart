@@ -208,25 +208,6 @@ class _IskeleState extends State<Iskele> {
                       InkWell(
                         onTap: () {
                           girisYap();
-
-                          /*isValid = EmailValidator.validate(t1.text);
-                      if (isValid) {
-                        girisYap();
-                      } else if (t1.text.isEmpty) {
-                        Fluttertoast.showToast(
-                            msg: 'Mail Adresinizi Giriniz',
-                            toastLength: Toast.LENGTH_SHORT,
-                            gravity: ToastGravity.TOP,
-                            timeInSecForIosWeb: 1,
-                            fontSize: 16.0);
-                      } else {
-                        Fluttertoast.showToast(
-                            msg: 'Geçerli Bir Mail Adresi Giriniz',
-                            toastLength: Toast.LENGTH_SHORT,
-                            gravity: ToastGravity.TOP,
-                            timeInSecForIosWeb: 1,
-                            fontSize: 16.0);
-                      }*/
                         },
                         child: Container(
                           padding: EdgeInsets.symmetric(vertical: 5),
@@ -307,12 +288,6 @@ class _IskeleState extends State<Iskele> {
                           ],
                         ),
                       ),
-                      /*Row(
-                      children: [
-                        ElevatedButton(child: Text("Kaydol"), onPressed: kayitOl),
-                        ElevatedButton(child: Text("Giriş Yap"), onPressed: girisYap),
-                      ],
-                    ),*/
                     ],
                   ),
                 ),
