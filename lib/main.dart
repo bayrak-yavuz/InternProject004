@@ -62,7 +62,7 @@ class _IskeleState extends State<Iskele> {
             msg: 'Hatalı Şifre',
             backgroundColor: Colors.red.shade600,
             toastLength: Toast.LENGTH_SHORT,
-            gravity: ToastGravity.TOP,
+            gravity: ToastGravity.BOTTOM,
             timeInSecForIosWeb: 5,
             fontSize: 16.0);
       } else if (e.code == "user-not-found") {
@@ -70,7 +70,7 @@ class _IskeleState extends State<Iskele> {
             msg: 'Kullanıcı Bulunamadı',
             backgroundColor: Colors.red.shade600,
             toastLength: Toast.LENGTH_SHORT,
-            gravity: ToastGravity.TOP,
+            gravity: ToastGravity.BOTTOM,
             timeInSecForIosWeb: 5,
             fontSize: 16.0);
       } else {
@@ -78,33 +78,11 @@ class _IskeleState extends State<Iskele> {
             msg: 'Eksik veya Hatalı Giriş',
             backgroundColor: Colors.red.shade600,
             toastLength: Toast.LENGTH_SHORT,
-            gravity: ToastGravity.TOP,
+            gravity: ToastGravity.BOTTOM,
             timeInSecForIosWeb: 5,
             fontSize: 16.0);
       }
-
-      /*Fluttertoast.showToast(
-          msg: 'Hata Kodu: ${e.code}',
-          backgroundColor: Colors.red.shade600,
-          toastLength: Toast.LENGTH_SHORT,
-          gravity: ToastGravity.TOP,
-          timeInSecForIosWeb: 5,
-          fontSize: 16.0);*/
-
-      //print('Hata Kodu: ${e.message}');
-
-      //print('Failed with error code: ${e.code}');
-      //print(e.message);
     }
-
-    /* FirebaseAuth.instance
-        .signInWithEmailAndPassword(email: t1.text, password: t2.text)
-        .then((kullanici) { 
-      Navigator.pushAndRemoveUntil(
-          context,
-          MaterialPageRoute(builder: (_) => ProfilEkrani()),
-          (Route<dynamic> route) => false);
-    });*/
   }
 
   @override

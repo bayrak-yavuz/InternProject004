@@ -95,7 +95,7 @@ class _sifremiUnuttumState extends State<sifremiUnuttum> {
                                 msg: 'Şifre Sıfırlama Bağlantısı E-Posta Adresinize Gönderilmiştir.',
                                 backgroundColor: Colors.red.shade600,
                                 toastLength: Toast.LENGTH_SHORT,
-                                gravity: ToastGravity.TOP,
+                                gravity: ToastGravity.BOTTOM,
                                 timeInSecForIosWeb: 5,
                                 fontSize: 16.0);
 
@@ -115,7 +115,7 @@ class _sifremiUnuttumState extends State<sifremiUnuttum> {
                                 msg: 'E-postanızı giriniz!',
                                 backgroundColor: Colors.red.shade600,
                                 toastLength: Toast.LENGTH_SHORT,
-                                gravity: ToastGravity.TOP,
+                                gravity: ToastGravity.BOTTOM,
                                 timeInSecForIosWeb: 1,
                                 fontSize: 16.0);
                           } else {
@@ -123,7 +123,7 @@ class _sifremiUnuttumState extends State<sifremiUnuttum> {
                                 msg: 'Geçersiz e-posta!',
                                 backgroundColor: Colors.red.shade600,
                                 toastLength: Toast.LENGTH_SHORT,
-                                gravity: ToastGravity.TOP,
+                                gravity: ToastGravity.BOTTOM,
                                 timeInSecForIosWeb: 1,
                                 fontSize: 16.0);
                           }

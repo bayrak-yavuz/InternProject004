@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -73,9 +75,43 @@ class KullaniciYazilari extends StatelessWidget {
           children: snapshot.data!.docs.map((DocumentSnapshot document) {
             Map<String, dynamic> data =
                 document.data()! as Map<String, dynamic>;
-            return ListTile(
-              title: Text(data['title']),
-              subtitle: Text(data['content']),
+            return Card(
+              color: Colors.blueGrey.shade200.withOpacity(.75),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  ListTile(
+                    leading: Icon(Icons.text_snippet_rounded),
+                    title: Text(data['title']),
+                    subtitle:
+                        Text(data['content']),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: <Widget>[
+                      TextButton(
+                        style: TextButton.styleFrom(
+                          primary: Colors.red.shade700,
+                        ),
+                        child: Text('Sil'),
+                        onPressed: () {
+                          String willDeleted = data['title'];
+                          FirebaseFirestore.instance.collection("notes").doc(willDeleted).delete();
+                        },
+                      ),
+                      SizedBox(width: 8),
+                      TextButton(
+                        style: TextButton.styleFrom(
+                          primary: Colors.lightGreen.shade800,
+                        ),
+                        child: Text('Düzenle'),
+                        onPressed: () {/* ... */},
+                      ),
+                      SizedBox(width: 8),
+                    ],
+                  ),
+                ],
+              ),
             );
           }).toList(),
         );
@@ -83,3 +119,8 @@ class KullaniciYazilari extends StatelessWidget {
     );
   }
 }
+
+            /*ListTile(
+              title: Text(data['title']),
+              subtitle: Text(data['content']),
+            );*/
