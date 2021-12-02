@@ -55,8 +55,8 @@ class KullaniciYazilari extends StatelessWidget {
     var currentUser = FirebaseAuth.instance.currentUser;
 
     Query blogYazilari = FirebaseFirestore.instance
-        .collection('Yazilar')
-        .where("kullaniciid", isEqualTo: currentUser!.uid);
+        .collection('notes')
+        .where("uid", isEqualTo: currentUser!.uid);
 
     return StreamBuilder<QuerySnapshot>(
       stream: blogYazilari.snapshots(),
@@ -74,8 +74,8 @@ class KullaniciYazilari extends StatelessWidget {
             Map<String, dynamic> data =
                 document.data()! as Map<String, dynamic>;
             return ListTile(
-              title: Text(data['baslik']),
-              subtitle: Text(data['icerik']),
+              title: Text(data['title']),
+              subtitle: Text(data['content']),
             );
           }).toList(),
         );

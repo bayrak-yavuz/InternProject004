@@ -16,8 +16,7 @@ class AnaSayfa extends StatelessWidget {
 class TumYazilar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    CollectionReference users =
-        FirebaseFirestore.instance.collection('Yazilar');
+    CollectionReference users = FirebaseFirestore.instance.collection('notes');
 
     return StreamBuilder<QuerySnapshot>(
       stream: users.snapshots(),
@@ -35,8 +34,8 @@ class TumYazilar extends StatelessWidget {
             Map<String, dynamic> data =
                 document.data()! as Map<String, dynamic>;
             return new ListTile(
-              title: new Text(data['baslik']),
-              subtitle: new Text(data['icerik']),
+              title: new Text(data['title']),
+              subtitle: new Text(data['content']),
             );
           }).toList(),
         );

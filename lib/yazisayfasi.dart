@@ -1,6 +1,9 @@
+// ignore_for_file: prefer_const_constructors, unused_import
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class YaziEkrani extends StatefulWidget {
   @override
@@ -8,8 +11,8 @@ class YaziEkrani extends StatefulWidget {
 }
 
 class _YaziEkraniState extends State<YaziEkrani> {
-  TextEditingController t1 = TextEditingController();
-  TextEditingController t2 = TextEditingController();
+  TextEditingController t1 = TextEditingController(); //başlık
+  TextEditingController t2 = TextEditingController(); //içerik
 
   var gelenYaziBasligi = "";
   var gelenYaziIcerigi = "";
@@ -17,36 +20,28 @@ class _YaziEkraniState extends State<YaziEkrani> {
   var currentUser = FirebaseAuth.instance.currentUser;
 
   yaziEkle() {
-    FirebaseFirestore.instance.collection("Yazilar").doc(t1.text).set({
-      'kullaniciid': currentUser!.uid,
-      'baslik': t1.text,
-      'icerik': t2.text
-    }).whenComplete(() => print("Yazı eklendi"));
+    DateTime now = DateTime.now();
+    String formattedDate = DateFormat('kk:mm:ss \n EEE d MMM').format(now);
+    FirebaseFirestore.instance.collection("notes").doc(t1.text).set({
+      'content': t2.text,
+      'created_date': formattedDate,
+      'is_deleted': false,
+      //'noteid':
+      //'shared_users':
+      'title': t1.text,
+      'uid': currentUser!.uid,
+    });
   }
 
-  yaziGuncelle() {
+  /* yaziGuncelle() {
     FirebaseFirestore.instance
         .collection("Yazilar")
         .doc(t1.text)
-        .update({'baslik': t1.text, 'icerik': t2.text}).whenComplete(
-            () => print("Yazı güncellendi"));
+        .update({'baslik': t1.text, 'icerik': t2.text});
   }
 
   yaziSil() {
     FirebaseFirestore.instance.collection("Yazilar").doc(t1.text).delete();
-  }
-
-  /*yaziGetir() {
-    FirebaseFirestore.instance
-        .collection("Yazilar")
-        .doc(t1.text)
-        .get()
-        .then((gelenVeri) {
-      setState(() {
-        gelenYaziBasligi = gelenVeri.data()['baslik'];
-        gelenYaziIcerigi = gelenVeri.data()['icerik'];
-      });
-    });
   }*/
 
   @override
@@ -69,10 +64,9 @@ class _YaziEkraniState extends State<YaziEkrani> {
               Row(
                 children: [
                   ElevatedButton(child: Text("Ekle"), onPressed: yaziEkle),
-                  ElevatedButton(
+                  /*ElevatedButton(
                       child: Text("Güncelle"), onPressed: yaziGuncelle),
-                  ElevatedButton(child: Text("Sil"), onPressed: yaziSil),
-                  //ElevatedButton(child: Text("Getir"), onPressed: yaziGetir),
+                  ElevatedButton(child: Text("Sil"), onPressed: yaziSil),*/
                 ],
               ),
               ListTile(
