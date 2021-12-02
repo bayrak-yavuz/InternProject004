@@ -55,7 +55,7 @@ class KullaniciYazilari extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var currentUser = FirebaseAuth.instance.currentUser;
-
+ //yorum satrisifadsadsa
     Query blogYazilari = FirebaseFirestore.instance
         .collection('notes')
         .where("uid", isEqualTo: currentUser!.uid);
