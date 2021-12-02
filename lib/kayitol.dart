@@ -186,7 +186,7 @@ class _kayitSayfasiState extends State<kayitSayfasi> {
                                       'Kayıt Başarılı! \nGiriş Ekranına Yönlendiriliyorsunuz...',
                                   backgroundColor: Colors.red.shade600,
                                   toastLength: Toast.LENGTH_SHORT,
-                                  gravity: ToastGravity.BOTTOM,
+                                  gravity: ToastGravity.TOP,
                                   timeInSecForIosWeb: 5,
                                   fontSize: 16.0);
 
@@ -204,7 +204,7 @@ class _kayitSayfasiState extends State<kayitSayfasi> {
                                   msg: 'Şifrenizi kontrol ediniz!',
                                   backgroundColor: Colors.red.shade600,
                                   toastLength: Toast.LENGTH_SHORT,
-                                  gravity: ToastGravity.BOTTOM,
+                                  gravity: ToastGravity.TOP,
                                   timeInSecForIosWeb: 2,
                                   fontSize: 16.0);
                             }
@@ -213,7 +213,7 @@ class _kayitSayfasiState extends State<kayitSayfasi> {
                                 msg: 'E-postanızı giriniz!',
                                 backgroundColor: Colors.red.shade600,
                                 toastLength: Toast.LENGTH_SHORT,
-                                gravity: ToastGravity.BOTTOM,
+                                gravity: ToastGravity.TOP,
                                 timeInSecForIosWeb: 1,
                                 fontSize: 16.0);
                           } else {
@@ -221,7 +221,7 @@ class _kayitSayfasiState extends State<kayitSayfasi> {
                                 msg: 'Geçersiz e-posta!',
                                 backgroundColor: Colors.red.shade600,
                                 toastLength: Toast.LENGTH_SHORT,
-                                gravity: ToastGravity.BOTTOM,
+                                gravity: ToastGravity.TOP,
                                 timeInSecForIosWeb: 1,
                                 fontSize: 16.0);
                           }

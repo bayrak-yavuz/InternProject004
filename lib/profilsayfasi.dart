@@ -16,6 +16,7 @@ class ProfilEkrani extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.blueGrey.shade800.withOpacity(.75),
         title: Text("Profil Sayfası"),
+        backgroundColor: Colors.blueGrey.shade800.withOpacity(.75),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.home),
@@ -133,8 +134,3 @@ class KullaniciYazilari extends StatelessWidget {
     );
   }
 }
-
-            /*ListTile(
-              title: Text(data['title']),
-              subtitle: Text(data['content']),
-            );*/

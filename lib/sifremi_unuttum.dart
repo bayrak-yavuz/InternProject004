@@ -34,7 +34,7 @@ class _sifremiUnuttumState extends State<sifremiUnuttum> {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10.0),
             child: Container(
-              height: size.height * .50,
+              height: size.height * .25,
               width: size.width * .75,
               decoration: BoxDecoration(
                   color: Colors.blueGrey.shade800.withOpacity(.75),
@@ -94,7 +94,7 @@ class _sifremiUnuttumState extends State<sifremiUnuttum> {
                                     'Şifre Sıfırlama Bağlantısı E-Posta Adresinize Gönderilmiştir.',
                                 backgroundColor: Colors.red.shade600,
                                 toastLength: Toast.LENGTH_SHORT,
-                                gravity: ToastGravity.BOTTOM,
+                                gravity: ToastGravity.TOP,
                                 timeInSecForIosWeb: 5,
                                 fontSize: 16.0);
 
@@ -111,7 +111,7 @@ class _sifremiUnuttumState extends State<sifremiUnuttum> {
                                 msg: 'E-postanızı giriniz!',
                                 backgroundColor: Colors.red.shade600,
                                 toastLength: Toast.LENGTH_SHORT,
-                                gravity: ToastGravity.BOTTOM,
+                                gravity: ToastGravity.TOP,
                                 timeInSecForIosWeb: 1,
                                 fontSize: 16.0);
                           } else {
@@ -119,7 +119,7 @@ class _sifremiUnuttumState extends State<sifremiUnuttum> {
                                 msg: 'Geçersiz e-posta!',
                                 backgroundColor: Colors.red.shade600,
                                 toastLength: Toast.LENGTH_SHORT,
-                                gravity: ToastGravity.BOTTOM,
+                                gravity: ToastGravity.TOP,
                                 timeInSecForIosWeb: 1,
                                 fontSize: 16.0);
                           }
