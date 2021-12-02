@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, prefer_const_literals_to_create_immutables, unused_local_variable
 // ignore: unused_import
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -47,15 +47,65 @@ class _IskeleState extends State<Iskele> {
     });
   }*/
 
-  girisYap() {
-    FirebaseAuth.instance
+  girisYap() async {
+    try {
+      await FirebaseAuth.instance
+          .signInWithEmailAndPassword(email: t1.text, password: t2.text)
+          .then((kullanici) {
+        Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(builder: (_) => ProfilEkrani()),
+            (Route<dynamic> route) => false);
+      });
+    } on FirebaseAuthException catch (e) {
+      if (e.code == "wrong-password") {
+        Fluttertoast.showToast(
+            msg: 'Hatalı Şifre',
+            backgroundColor: Colors.red.shade600,
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.TOP,
+            timeInSecForIosWeb: 5,
+            fontSize: 16.0);
+      } else if (e.code == "user-not-found") {
+        Fluttertoast.showToast(
+            msg: 'Kullanıcı Bulunamadı',
+            backgroundColor: Colors.red.shade600,
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.TOP,
+            timeInSecForIosWeb: 5,
+            fontSize: 16.0);
+      } else {
+        Fluttertoast.showToast(
+            msg: 'Eksik veya Hatalı Giriş',
+            backgroundColor: Colors.red.shade600,
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.TOP,
+            timeInSecForIosWeb: 5,
+            fontSize: 16.0);
+      }
+
+      /*Fluttertoast.showToast(
+          msg: 'Hata Kodu: ${e.code}',
+          backgroundColor: Colors.red.shade600,
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.TOP,
+          timeInSecForIosWeb: 5,
+          fontSize: 16.0);*/
+
+      //print('Hata Kodu: ${e.message}');
+
+      //print('Failed with error code: ${e.code}');
+      //print(e.message);
+    }
+
+    /* FirebaseAuth.instance
         .signInWithEmailAndPassword(email: t1.text, password: t2.text)
-        .then((kullanici) {
+        .then((kullanici) { 
       Navigator.pushAndRemoveUntil(
           context,
           MaterialPageRoute(builder: (_) => ProfilEkrani()),
           (Route<dynamic> route) => false);
-    });
+    });*/
   }
 
   @override
@@ -152,7 +202,9 @@ class _IskeleState extends State<Iskele> {
                   ),
                   InkWell(
                     onTap: () {
-                      isValid = EmailValidator.validate(t1.text);
+                      girisYap();
+
+                      /*isValid = EmailValidator.validate(t1.text);
                       if (isValid) {
                         girisYap();
                       } else if (t1.text.isEmpty) {
@@ -169,7 +221,7 @@ class _IskeleState extends State<Iskele> {
                             gravity: ToastGravity.TOP,
                             timeInSecForIosWeb: 1,
                             fontSize: 16.0);
-                      }
+                      }*/
                     },
                     child: Container(
                       padding: EdgeInsets.symmetric(vertical: 5),
