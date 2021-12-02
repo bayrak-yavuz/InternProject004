@@ -45,34 +45,51 @@ class _YaziEkraniState extends State<YaziEkrani> {
 
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        title: Text("Yazı Ekranı"),
+        backgroundColor: Colors.blueGrey.shade800.withOpacity(.75),
+        title: Text("Yazı Ekle"),
+        centerTitle: true,
       ),
-      body: Container(
-        margin: EdgeInsets.all(40),
-        child: Center(
-          child: Column(
-            children: [
-              TextField(
-                controller: t1,
-              ),
-              TextField(
-                controller: t2,
-              ),
-              Row(
-                children: [
-                  ElevatedButton(child: Text("Ekle"), onPressed: yaziEkle),
-                  /*ElevatedButton(
-                      child: Text("Güncelle"), onPressed: yaziGuncelle),
-                  ElevatedButton(child: Text("Sil"), onPressed: yaziSil),*/
-                ],
-              ),
-              ListTile(
-                title: Text(gelenYaziBasligi),
-                subtitle: Text(gelenYaziIcerigi),
-              ),
-            ],
+      backgroundColor: Colors.blueGrey.shade600,
+      body: Center(
+        child: Card(
+          color: Colors.blueGrey.shade200.withOpacity(.75),
+          child: Padding(
+            padding: EdgeInsets.fromLTRB(30, 10, 30, 60),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                TextField(
+                  decoration: InputDecoration(
+                    border: UnderlineInputBorder(),
+                    labelText: 'Başlık',
+                  ),
+                  controller: t1,
+                ),
+                SizedBox(
+                  height: size.height * 0.02,
+                ),
+                TextField(
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'İçerik',
+                  ),
+                  maxLines: 4,
+                  controller: t2,
+                ),
+                SizedBox(
+                  height: size.height * 0.04,
+                ),
+                ElevatedButton(
+                  onPressed: yaziEkle,
+                  child: Text("Ekle"),
+                  style: ElevatedButton.styleFrom(
+                      primary: Colors.blueGrey.shade800),
+                ),
+              ],
+            ),
           ),
         ),
       ),

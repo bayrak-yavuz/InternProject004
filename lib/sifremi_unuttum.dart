@@ -7,7 +7,6 @@ import 'package:email_validator/email_validator.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:kullanici_giris/main.dart';
 
-
 class sifremiUnuttum extends StatefulWidget {
   const sifremiUnuttum({Key? key}) : super(key: key);
 
@@ -15,9 +14,7 @@ class sifremiUnuttum extends StatefulWidget {
   _sifremiUnuttumState createState() => _sifremiUnuttumState();
 }
 
-
 class _sifremiUnuttumState extends State<sifremiUnuttum> {
-
   bool isValid = false;
   TextEditingController t1 = TextEditingController();
   var currentUser = FirebaseAuth.instance.currentUser;
@@ -26,6 +23,7 @@ class _sifremiUnuttumState extends State<sifremiUnuttum> {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
+        backgroundColor: Colors.blueGrey.shade600,
         appBar: AppBar(
           backgroundColor: Colors.blueGrey.shade800.withOpacity(.75),
           leading: BackButton(color: Colors.white),
@@ -92,7 +90,8 @@ class _sifremiUnuttumState extends State<sifremiUnuttum> {
                           isValid = EmailValidator.validate(t1.text);
                           if (isValid) {
                             Fluttertoast.showToast(
-                                msg: 'Şifre Sıfırlama Bağlantısı E-Posta Adresinize Gönderilmiştir.',
+                                msg:
+                                    'Şifre Sıfırlama Bağlantısı E-Posta Adresinize Gönderilmiştir.',
                                 backgroundColor: Colors.red.shade600,
                                 toastLength: Toast.LENGTH_SHORT,
                                 gravity: ToastGravity.BOTTOM,
@@ -100,17 +99,14 @@ class _sifremiUnuttumState extends State<sifremiUnuttum> {
                                 fontSize: 16.0);
 
                             FirebaseAuth.instance
-                                .sendPasswordResetEmail(
-                                     email: t1.text)
+                                .sendPasswordResetEmail(email: t1.text)
                                 .then((kullanici) {
                               Navigator.pushAndRemoveUntil(
                                   context,
-                                  MaterialPageRoute(
-                                      builder: (_) => Iskele()),
+                                  MaterialPageRoute(builder: (_) => Iskele()),
                                   (Route<dynamic> route) => false);
-                                  }
-                                );}
-                           else if (t1.text.isEmpty) {
+                            });
+                          } else if (t1.text.isEmpty) {
                             Fluttertoast.showToast(
                                 msg: 'E-postanızı giriniz!',
                                 backgroundColor: Colors.red.shade600,

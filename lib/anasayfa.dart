@@ -7,7 +7,11 @@ class AnaSayfa extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Anasayfa")),
+      backgroundColor: Colors.blueGrey.shade600,
+      appBar: AppBar(
+        title: Text("Anasayfa"),
+        backgroundColor: Colors.blueGrey.shade800.withOpacity(.75),
+      ),
       body: TumYazilar(),
     );
   }
@@ -41,8 +45,7 @@ class TumYazilar extends StatelessWidget {
                   ListTile(
                     leading: Icon(Icons.text_snippet_rounded),
                     title: Text(data['title']),
-                    subtitle:
-                        Text(data['content']),
+                    subtitle: Text(data['content']),
                   ),
                 ],
               ),

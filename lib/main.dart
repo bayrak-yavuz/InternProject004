@@ -89,6 +89,7 @@ class _IskeleState extends State<Iskele> {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
+        backgroundColor: Colors.blueGrey.shade600,
         appBar: AppBar(
           backgroundColor: Colors.blueGrey.shade800.withOpacity(.75),
           title: Text("toDoList"),

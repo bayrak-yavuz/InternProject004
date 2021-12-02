@@ -12,7 +12,9 @@ class ProfilEkrani extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.blueGrey.shade600,
       appBar: AppBar(
+        backgroundColor: Colors.blueGrey.shade800.withOpacity(.75),
         title: Text("Profil Sayfası"),
         actions: <Widget>[
           IconButton(
@@ -37,7 +39,10 @@ class ProfilEkrani extends StatelessWidget {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.add),
+          child: Icon(
+            Icons.add,
+          ),
+          backgroundColor: Colors.blueGrey.shade800,
           onPressed: () {
             Navigator.pushAndRemoveUntil(
                 context,
@@ -55,7 +60,7 @@ class KullaniciYazilari extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var currentUser = FirebaseAuth.instance.currentUser;
- //yorum satrisifadsadsa
+    //yorum satrisifadsadsa
     Query blogYazilari = FirebaseFirestore.instance
         .collection('notes')
         .where("uid", isEqualTo: currentUser!.uid);
@@ -83,8 +88,7 @@ class KullaniciYazilari extends StatelessWidget {
                   ListTile(
                     leading: Icon(Icons.text_snippet_rounded),
                     title: Text(data['title']),
-                    subtitle:
-                        Text(data['content']),
+                    subtitle: Text(data['content']),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
@@ -96,7 +100,10 @@ class KullaniciYazilari extends StatelessWidget {
                         child: Text('Sil'),
                         onPressed: () {
                           String willDeleted = data['title'];
-                          FirebaseFirestore.instance.collection("notes").doc(willDeleted).delete();
+                          FirebaseFirestore.instance
+                              .collection("notes")
+                              .doc(willDeleted)
+                              .delete();
                         },
                       ),
                       SizedBox(width: 8),
@@ -105,7 +112,14 @@ class KullaniciYazilari extends StatelessWidget {
                           primary: Colors.lightGreen.shade800,
                         ),
                         child: Text('Düzenle'),
-                        onPressed: () {/* ... */},
+                        onPressed: () {
+                          /*FirebaseAuth.instance.signOut().then((deger) {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (_) => YaziEkrani()),
+                            );
+                          });*/
+                        },
                       ),
                       SizedBox(width: 8),
                     ],

@@ -45,6 +45,7 @@ class _kayitSayfasiState extends State<kayitSayfasi> {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
+        backgroundColor: Colors.blueGrey.shade600,
         appBar: AppBar(
           backgroundColor: Colors.blueGrey.shade800.withOpacity(.75),
           leading: BackButton(color: Colors.white),
