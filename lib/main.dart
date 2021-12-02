@@ -8,6 +8,7 @@ import 'package:kullanici_giris/kayitol.dart';
 import 'package:kullanici_giris/profilsayfasi.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:kullanici_giris/sifremi_unuttum.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -194,12 +195,12 @@ class _IskeleState extends State<Iskele> {
                   ),
                   InkWell(
                     onTap: () {
-                      /*FirebaseAuth.instance.signOut().then((deger) {
-                        Navigator.pushAndRemoveUntil(
+                      FirebaseAuth.instance.signOut().then((deger) {
+                        Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (_) => kayitSayfasi()),
-                            (Route<dynamic> route) => false);
-                      });*/
+                            MaterialPageRoute(builder: (_) => sifremiUnuttum()),
+                            );
+                      });
                       //şifremi unuttum
                     },
                     child: Row(
