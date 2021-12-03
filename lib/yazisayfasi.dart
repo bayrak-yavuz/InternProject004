@@ -6,6 +6,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:kullanici_giris/profilsayfasi.dart';
 
 class YaziEkrani extends StatefulWidget {
   @override
@@ -21,7 +23,6 @@ class _YaziEkraniState extends State<YaziEkrani> {
   var gelenYaziIcerigi = "";
   final List<String> permission = <String>[];
   var currentUser = FirebaseAuth.instance.currentUser;
-
   yaziEkle() {
     DateTime now = DateTime.now();
     String formattedDate = DateFormat('kk:mm:ss \n EEE d MMM').format(now);
@@ -38,6 +39,10 @@ class _YaziEkraniState extends State<YaziEkrani> {
 
   getMail() {
     permission.add(t3.text);
+  }
+
+  listClear() {
+    permission.clear();
   }
 
   /* yaziGuncelle() {
@@ -63,13 +68,14 @@ class _YaziEkraniState extends State<YaziEkrani> {
       backgroundColor: Colors.blueGrey.shade600,
       body: Center(
         child: Card(
-          color: Colors.blueGrey.shade200.withOpacity(.75),
+          color: Colors.blueGrey.shade600.withOpacity(.50),
           child: Padding(
             padding: EdgeInsets.fromLTRB(20, 0, 20, 20),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 TextField(
+                  //başlık
                   decoration: InputDecoration(
                     border: UnderlineInputBorder(),
                     labelText: 'Başlık',
@@ -80,6 +86,7 @@ class _YaziEkraniState extends State<YaziEkrani> {
                   height: size.height * 0.01,
                 ),
                 TextField(
+                  //içerik
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'İçerik',
@@ -108,7 +115,21 @@ class _YaziEkraniState extends State<YaziEkrani> {
                       height: 48,
                       padding: EdgeInsets.fromLTRB(2, 5, 0, 5),
                       child: ElevatedButton(
-                        onPressed: getMail,
+                        //kullanıcı ekleme
+                        onPressed: () {
+                          if (t3.text.isEmpty) {
+                            Fluttertoast.showToast(
+                                msg: 'Eksik Tuşlama Yaptınız',
+                                backgroundColor: Colors.red.shade600,
+                                toastLength: Toast.LENGTH_SHORT,
+                                gravity: ToastGravity.TOP,
+                                timeInSecForIosWeb: 2,
+                                fontSize: 16.0);
+                          } else {
+                            getMail();
+                            t3.clear();
+                          }
+                        },
                         child: Text("Ekle"),
                         style: ElevatedButton.styleFrom(
                             primary: Colors.blueGrey.shade800),
@@ -116,12 +137,59 @@ class _YaziEkraniState extends State<YaziEkrani> {
                     )
                   ],
                 ),
-                ElevatedButton(
+                InkWell(
+                  onTap: () {
+                    if (t1.text.isEmpty && t2.text.isEmpty) {
+                      Fluttertoast.showToast(
+                          msg: 'Eksik Yerleri Doldurunuz',
+                          backgroundColor: Colors.red.shade600,
+                          toastLength: Toast.LENGTH_SHORT,
+                          gravity: ToastGravity.TOP,
+                          timeInSecForIosWeb: 2,
+                          fontSize: 16.0);
+                    } else {
+                      yaziEkle();
+                      Fluttertoast.showToast(
+                          msg: 'Yazı Eklendi',
+                          backgroundColor: Colors.red.shade600,
+                          toastLength: Toast.LENGTH_SHORT,
+                          gravity: ToastGravity.TOP,
+                          timeInSecForIosWeb: 3,
+                          fontSize: 16.0);
+                    }
+                    listClear();
+                    t1.clear();
+                    t2.clear();
+                    Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(builder: (_) => ProfilEkrani()),
+                        (Route<dynamic> route) => true);
+                  },
+                  child: Container(
+                    padding: EdgeInsets.symmetric(vertical: 5),
+                    decoration: BoxDecoration(
+                        border: Border.all(color: Colors.blueGrey.shade800),
+                        borderRadius: BorderRadius.all(Radius.circular(50))),
+                    child: Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: Center(
+                        child: Text(
+                          "Yazı Ekle",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                /* ElevatedButton(
                   onPressed: yaziEkle,
                   child: Text("Yazıyı Ekle"),
                   style: ElevatedButton.styleFrom(
                       primary: Colors.blueGrey.shade800),
-                ),
+                ),*/
               ],
             ),
           ),
