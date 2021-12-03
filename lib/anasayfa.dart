@@ -26,11 +26,11 @@ class TumYazilar extends StatelessWidget {
       stream: users.snapshots(),
       builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
         if (snapshot.hasError) {
-          return Text('Something went wrong');
+          return Text('Bir şeyler ters gitti!');
         }
 
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return Text("Loading");
+          return Text("Yükleniyor..");
         }
 
         return new ListView(
