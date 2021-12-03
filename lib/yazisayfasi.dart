@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_const_constructors, unused_import
 
+import 'dart:ui';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -13,9 +15,11 @@ class YaziEkrani extends StatefulWidget {
 class _YaziEkraniState extends State<YaziEkrani> {
   TextEditingController t1 = TextEditingController(); //başlık
   TextEditingController t2 = TextEditingController(); //içerik
+  TextEditingController t3 = TextEditingController(); //e mail
 
   var gelenYaziBasligi = "";
   var gelenYaziIcerigi = "";
+  final List<String> permission = <String>[];
   var currentUser = FirebaseAuth.instance.currentUser;
 
   yaziEkle() {
@@ -26,10 +30,14 @@ class _YaziEkraniState extends State<YaziEkrani> {
       'created_date': formattedDate,
       'is_deleted': false,
       //'noteid':
-      //'shared_users':
+      'shared_users': permission,
       'title': t1.text,
       'uid': currentUser!.uid,
     });
+  }
+
+  getMail() {
+    permission.add(t3.text);
   }
 
   /* yaziGuncelle() {
@@ -57,7 +65,7 @@ class _YaziEkraniState extends State<YaziEkrani> {
         child: Card(
           color: Colors.blueGrey.shade200.withOpacity(.75),
           child: Padding(
-            padding: EdgeInsets.fromLTRB(30, 10, 30, 60),
+            padding: EdgeInsets.fromLTRB(20, 0, 20, 20),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
@@ -69,22 +77,48 @@ class _YaziEkraniState extends State<YaziEkrani> {
                   controller: t1,
                 ),
                 SizedBox(
-                  height: size.height * 0.02,
+                  height: size.height * 0.01,
                 ),
                 TextField(
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'İçerik',
                   ),
-                  maxLines: 4,
+                  maxLines: 3,
                   controller: t2,
                 ),
                 SizedBox(
-                  height: size.height * 0.04,
+                  height: size.height * 0.01,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Container(
+                      width: 295,
+                      height: 40,
+                      child: TextField(
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(),
+                          labelText: 'Yazıyı Görecek Olan Kullanıcılar',
+                        ),
+                        controller: t3,
+                      ),
+                    ),
+                    Container(
+                      height: 48,
+                      padding: EdgeInsets.fromLTRB(2, 5, 0, 5),
+                      child: ElevatedButton(
+                        onPressed: getMail,
+                        child: Text("Ekle"),
+                        style: ElevatedButton.styleFrom(
+                            primary: Colors.blueGrey.shade800),
+                      ),
+                    )
+                  ],
                 ),
                 ElevatedButton(
                   onPressed: yaziEkle,
-                  child: Text("Ekle"),
+                  child: Text("Yazıyı Ekle"),
                   style: ElevatedButton.styleFrom(
                       primary: Colors.blueGrey.shade800),
                 ),
