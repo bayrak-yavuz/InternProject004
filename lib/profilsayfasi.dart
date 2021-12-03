@@ -97,7 +97,7 @@ class KullaniciYazilari extends StatelessWidget {
                         style: TextButton.styleFrom(
                           primary: Colors.red.shade700,
                         ),
-                        child: Text('Sil'),
+                        child: Text('Sil', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
                         onPressed: () {
                           String willDeleted = data['title'];
                           FirebaseFirestore.instance
@@ -122,7 +122,7 @@ class KullaniciYazilari extends StatelessWidget {
                         style: TextButton.styleFrom(
                           primary: Colors.lightGreen.shade800,
                         ),
-                        child: Text('Düzenle'),
+                        child: Text('Düzenle', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold,),),
                         onPressed: () {
                           /*FirebaseAuth.instance.signOut().then((deger) {
                             Navigator.push(
