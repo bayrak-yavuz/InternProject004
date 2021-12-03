@@ -99,11 +99,22 @@ class KullaniciYazilari extends StatelessWidget {
                         ),
                         child: Text('Sil'),
                         onPressed: () {
-                          /*String willDeleted = data['title'];
+                          String willDeleted = data['title'];
+                          FirebaseFirestore.instance
+                              .collection("deleted_notes")
+                              .doc(willDeleted)
+                              .set({
+                            "content": data['content'],
+                            "created_date": data['created_date'],
+                            "is_deleted": true,
+                            "shared_users": data['shared_users'],
+                            "title": data['title'],
+                            "uid": data['uid']
+                          });
                           FirebaseFirestore.instance
                               .collection("notes")
                               .doc(willDeleted)
-                              .delete();*/
+                              .delete();
                         },
                       ),
                       SizedBox(width: 8),
