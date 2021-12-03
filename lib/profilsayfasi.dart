@@ -69,11 +69,11 @@ class KullaniciYazilari extends StatelessWidget {
       stream: blogYazilari.snapshots(),
       builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
         if (snapshot.hasError) {
-          return Text('Something went wrong');
+          return Text('Bir şeyler ters gitti!');
         }
 
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return Text("Loading");
+          return Text("Yükleniyor..");
         }
 
         return ListView(
@@ -99,11 +99,11 @@ class KullaniciYazilari extends StatelessWidget {
                         ),
                         child: Text('Sil'),
                         onPressed: () {
-                          String willDeleted = data['title'];
+                          /*String willDeleted = data['title'];
                           FirebaseFirestore.instance
                               .collection("notes")
                               .doc(willDeleted)
-                              .delete();
+                              .delete();*/
                         },
                       ),
                       SizedBox(width: 8),
