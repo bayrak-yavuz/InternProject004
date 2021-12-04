@@ -3,6 +3,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:kullanici_giris/d%C3%BCzenlemesayfasi.dart';
 import 'package:kullanici_giris/main.dart';
 import 'package:kullanici_giris/yazisayfasi.dart';
 
@@ -97,7 +98,11 @@ class KullaniciYazilari extends StatelessWidget {
                         style: TextButton.styleFrom(
                           primary: Colors.red.shade700,
                         ),
-                        child: Text('Sil', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+                        child: Text(
+                          'Sil',
+                          style: TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.bold),
+                        ),
                         onPressed: () {
                           String willDeleted = data['title'];
                           FirebaseFirestore.instance
@@ -122,14 +127,19 @@ class KullaniciYazilari extends StatelessWidget {
                         style: TextButton.styleFrom(
                           primary: Colors.lightGreen.shade800,
                         ),
-                        child: Text('Düzenle', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold,),),
+                        child: Text(
+                          'Düzenle',
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                         onPressed: () {
-                          /*FirebaseAuth.instance.signOut().then((deger) {
-                            Navigator.push(
+                          Navigator.pushAndRemoveUntil(
                               context,
-                              MaterialPageRoute(builder: (_) => YaziEkrani()),
-                            );
-                          });*/
+                              MaterialPageRoute(
+                                  builder: (_) => duzenlemeSayfasi()),
+                              (Route<dynamic> route) => true);
                         },
                       ),
                       SizedBox(width: 8),
