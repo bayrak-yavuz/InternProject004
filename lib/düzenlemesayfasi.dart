@@ -15,6 +15,9 @@ class duzenlemeSayfasi extends StatefulWidget {
 }
 
 class _duzenlemeSayfasiState extends State<duzenlemeSayfasi> {
+  TextEditingController t1 = TextEditingController(); //başlık
+  TextEditingController t2 = TextEditingController(); //içerik
+  TextEditingController t3 = TextEditingController(); //e mail
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -33,6 +36,26 @@ class _duzenlemeSayfasiState extends State<duzenlemeSayfasi> {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
+                TextField(
+                  //başlık
+                  decoration: InputDecoration(
+                    border: UnderlineInputBorder(),
+                    labelText: 'Yazı Başlığını Yazınız',
+                  ),
+                  controller: t1,
+                ),
+                SizedBox(
+                  height: size.height * 0.01,
+                ),
+                ElevatedButton(
+                  onPressed: () {},
+                  child: Text("Yazıyı Getir"),
+                  style: ElevatedButton.styleFrom(
+                      primary: Colors.blueGrey.shade800),
+                ),
+                SizedBox(
+                  height: size.height * 0.01,
+                ),
                 TextField(
                   //başlık
                   decoration: InputDecoration(

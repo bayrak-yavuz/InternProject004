@@ -135,6 +135,7 @@ class KullaniciYazilari extends StatelessWidget {
                           ),
                         ),
                         onPressed: () {
+                          String title = data['title'];
                           Navigator.pushAndRemoveUntil(
                               context,
                               MaterialPageRoute(
