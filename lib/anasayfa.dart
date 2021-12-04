@@ -2,6 +2,7 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class AnaSayfa extends StatelessWidget {
   @override
@@ -20,7 +21,13 @@ class AnaSayfa extends StatelessWidget {
 class TumYazilar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    CollectionReference users = FirebaseFirestore.instance.collection('notes');
+    var currentUser = FirebaseAuth.instance.currentUser;
+    var mail = FirebaseAuth.instance.currentUser!.email;
+    Query users = FirebaseFirestore.instance
+        .collection('notes')
+        .where("uid", isEqualTo: currentUser!.uid)
+        .where("is_deleted", isEqualTo: false);
+        //.where("shared_users", arrayContains: mail);
 
     return StreamBuilder<QuerySnapshot>(
       stream: users.snapshots(),
