@@ -3,7 +3,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:kullanici_giris/d%C3%BCzenlemesayfasi.dart';
+import 'package:kullanici_giris/duzenlemesayfasi.dart';
 import 'package:kullanici_giris/main.dart';
 import 'package:kullanici_giris/yazisayfasi.dart';
 
@@ -141,8 +141,7 @@ class KullaniciYazilari extends StatelessWidget {
                 ],
               ),
             );
-          })
-          .toList(),
+          }).toList(),
         );
       },
     );
