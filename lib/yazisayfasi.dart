@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, unused_import
 
 import 'dart:ui';
+import 'package:uuid/uuid.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -19,18 +20,20 @@ class _YaziEkraniState extends State<YaziEkrani> {
   TextEditingController t2 = TextEditingController(); //içerik
   TextEditingController t3 = TextEditingController(); //e mail
 
+  var uuid = Uuid();
   var gelenYaziBasligi = "";
   var gelenYaziIcerigi = "";
   final List<String> permission = <String>[];
   var currentUser = FirebaseAuth.instance.currentUser;
   yaziEkle() {
+    var noteId = uuid.v1();
     DateTime now = DateTime.now();
     String formattedDate = DateFormat('kk:mm:ss \n EEE d MMM').format(now);
-    FirebaseFirestore.instance.collection("notes").doc(t1.text).set({
+    FirebaseFirestore.instance.collection("notes").doc(noteId).set({
       'content': t2.text,
       'created_date': formattedDate,
       'is_deleted': false,
-      //'noteid':
+      'noteid': noteId,
       'shared_users': permission,
       'title': t1.text,
       'uid': currentUser!.uid,
