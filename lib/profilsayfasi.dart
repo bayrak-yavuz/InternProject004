@@ -64,7 +64,8 @@ class KullaniciYazilari extends StatelessWidget {
     //yorum satrisifadsadsa
     Query blogYazilari = FirebaseFirestore.instance
         .collection('notes')
-        .where("uid", isEqualTo: currentUser!.uid);
+        .where("uid", isEqualTo: currentUser!.uid)
+        .where("is_deleted", isEqualTo: false);
 
     return StreamBuilder<QuerySnapshot>(
       stream: blogYazilari.snapshots(),
@@ -106,20 +107,11 @@ class KullaniciYazilari extends StatelessWidget {
                         onPressed: () {
                           String willDeleted = data['title'];
                           FirebaseFirestore.instance
-                              .collection("deleted_notes")
-                              .doc(willDeleted)
-                              .set({
-                            "content": data['content'],
-                            "created_date": data['created_date'],
-                            "is_deleted": true,
-                            "shared_users": data['shared_users'],
-                            "title": data['title'],
-                            "uid": data['uid']
-                          });
-                          FirebaseFirestore.instance
                               .collection("notes")
                               .doc(willDeleted)
-                              .delete();
+                              .update({
+                            "is_deleted": true,
+                          });
                         },
                       ),
                       SizedBox(width: 8),
@@ -149,7 +141,8 @@ class KullaniciYazilari extends StatelessWidget {
                 ],
               ),
             );
-          }).toList(),
+          })
+          .toList(),
         );
       },
     );
