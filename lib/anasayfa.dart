@@ -22,7 +22,7 @@ class TumYazilar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var currentUser = FirebaseAuth.instance.currentUser;
-    var mail = FirebaseAuth.instance.currentUser!.email;
+    //var mail = FirebaseAuth.instance.currentUser!.email;
     Query users = FirebaseFirestore.instance
         .collection('notes')
         .where("uid", isEqualTo: currentUser!.uid)
